@@ -1,3 +1,4 @@
+![Business Card pic](https://raw.githubusercontent.com/laplacier/PCB-Business-Card-v2/main/bcard_v2.png?token=GHSAT0AAAAAACSHRC7YGGAZJ2X5MNKFLI3EZTM7HHQ)
 # PCB Business Card v2
 This repository serves as a finished copy of my second PCB business card with certain personal data scrubbed. Feel free to utilize the included files as a template or guide for your own design!
 
