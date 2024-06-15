@@ -1,0 +1,1506 @@
+
+main.elf:     file format elf32-littleriscv
+
+
+Disassembly of section .init:
+
+00000000 <InterruptVector>:
+void InterruptVectorDefault()  __attribute__((naked)) __attribute((section(".init")));
+
+
+void InterruptVectorDefault()
+{
+	asm volatile( "\n\
+   0:	4380006f          	j	438 <handle_reset>
+   4:	0000                	unimp
+   6:	0000                	unimp
+   8:	04b0                	addi	a2,sp,584
+   a:	0000                	unimp
+   c:	04ae                	slli	s1,s1,0xb
+	...
+  2e:	0000                	unimp
+  30:	04ae                	slli	s1,s1,0xb
+  32:	0000                	unimp
+  34:	0000                	unimp
+  36:	0000                	unimp
+  38:	04ae                	slli	s1,s1,0xb
+  3a:	0000                	unimp
+  3c:	0000                	unimp
+  3e:	0000                	unimp
+  40:	04ae                	slli	s1,s1,0xb
+  42:	0000                	unimp
+  44:	04ae                	slli	s1,s1,0xb
+  46:	0000                	unimp
+  48:	04ae                	slli	s1,s1,0xb
+  4a:	0000                	unimp
+  4c:	04ae                	slli	s1,s1,0xb
+  4e:	0000                	unimp
+  50:	04ae                	slli	s1,s1,0xb
+  52:	0000                	unimp
+  54:	04ae                	slli	s1,s1,0xb
+  56:	0000                	unimp
+  58:	04ae                	slli	s1,s1,0xb
+  5a:	0000                	unimp
+  5c:	04ae                	slli	s1,s1,0xb
+  5e:	0000                	unimp
+  60:	04ae                	slli	s1,s1,0xb
+  62:	0000                	unimp
+  64:	04ae                	slli	s1,s1,0xb
+  66:	0000                	unimp
+  68:	04ae                	slli	s1,s1,0xb
+  6a:	0000                	unimp
+  6c:	04ae                	slli	s1,s1,0xb
+  6e:	0000                	unimp
+  70:	04ae                	slli	s1,s1,0xb
+  72:	0000                	unimp
+  74:	04ae                	slli	s1,s1,0xb
+  76:	0000                	unimp
+  78:	04ae                	slli	s1,s1,0xb
+  7a:	0000                	unimp
+  7c:	04ae                	slli	s1,s1,0xb
+  7e:	0000                	unimp
+  80:	04ae                	slli	s1,s1,0xb
+  82:	0000                	unimp
+  84:	04ae                	slli	s1,s1,0xb
+  86:	0000                	unimp
+  88:	04ae                	slli	s1,s1,0xb
+  8a:	0000                	unimp
+  8c:	04ae                	slli	s1,s1,0xb
+  8e:	0000                	unimp
+  90:	04ae                	slli	s1,s1,0xb
+  92:	0000                	unimp
+  94:	04ae                	slli	s1,s1,0xb
+  96:	0000                	unimp
+  98:	04ae                	slli	s1,s1,0xb
+  9a:	0000                	unimp
+  9c:	0000                	unimp
+	...
+
+Disassembly of section .text:
+
+000000a0 <__divsi3>:
+  a0:	02054e63          	bltz	a0,dc <__umodsi3+0x8>
+  a4:	0405c363          	bltz	a1,ea <__umodsi3+0x16>
+
+000000a8 <__hidden___udivsi3>:
+  a8:	862e                	mv	a2,a1
+  aa:	85aa                	mv	a1,a0
+  ac:	557d                	li	a0,-1
+  ae:	c215                	beqz	a2,d2 <__hidden___udivsi3+0x2a>
+  b0:	4685                	li	a3,1
+  b2:	00b67863          	bgeu	a2,a1,c2 <__hidden___udivsi3+0x1a>
+  b6:	00c05663          	blez	a2,c2 <__hidden___udivsi3+0x1a>
+  ba:	0606                	slli	a2,a2,0x1
+  bc:	0686                	slli	a3,a3,0x1
+  be:	feb66ce3          	bltu	a2,a1,b6 <__hidden___udivsi3+0xe>
+  c2:	4501                	li	a0,0
+  c4:	00c5e463          	bltu	a1,a2,cc <__hidden___udivsi3+0x24>
+  c8:	8d91                	sub	a1,a1,a2
+  ca:	8d55                	or	a0,a0,a3
+  cc:	8285                	srli	a3,a3,0x1
+  ce:	8205                	srli	a2,a2,0x1
+  d0:	faf5                	bnez	a3,c4 <__hidden___udivsi3+0x1c>
+  d2:	8082                	ret
+
+000000d4 <__umodsi3>:
+  d4:	8286                	mv	t0,ra
+  d6:	3fc9                	jal	a8 <__hidden___udivsi3>
+  d8:	852e                	mv	a0,a1
+  da:	8282                	jr	t0
+  dc:	40a00533          	neg	a0,a0
+  e0:	00b04763          	bgtz	a1,ee <__umodsi3+0x1a>
+  e4:	40b005b3          	neg	a1,a1
+  e8:	b7c1                	j	a8 <__hidden___udivsi3>
+  ea:	40b005b3          	neg	a1,a1
+  ee:	8286                	mv	t0,ra
+  f0:	3f65                	jal	a8 <__hidden___udivsi3>
+  f2:	40a00533          	neg	a0,a0
+  f6:	8282                	jr	t0
+
+000000f8 <__modsi3>:
+  f8:	8286                	mv	t0,ra
+  fa:	0005c763          	bltz	a1,108 <__modsi3+0x10>
+  fe:	00054963          	bltz	a0,110 <__modsi3+0x18>
+ 102:	375d                	jal	a8 <__hidden___udivsi3>
+ 104:	852e                	mv	a0,a1
+ 106:	8282                	jr	t0
+ 108:	40b005b3          	neg	a1,a1
+ 10c:	fe055be3          	bgez	a0,102 <__modsi3+0xa>
+ 110:	40a00533          	neg	a0,a0
+ 114:	3f51                	jal	a8 <__hidden___udivsi3>
+ 116:	40b00533          	neg	a0,a1
+ 11a:	8282                	jr	t0
+	...
+
+0000011e <mini_pad>:
+{
+ 11e:	1131                	addi	sp,sp,-20
+ 120:	c426                	sw	s1,8(sp)
+ 122:	c806                	sw	ra,16(sp)
+ 124:	c622                	sw	s0,12(sp)
+ 126:	84ae                	mv	s1,a1
+ 128:	87aa                	mv	a5,a0
+ 12a:	85b2                	mv	a1,a2
+	int overflow = 0;
+ 12c:	4301                	li	t1,0
+	if(pad_to == 0) pad_to = len;
+ 12e:	caad                	beqz	a3,1a0 <mini_pad+0x82>
+	if(len > pad_to) {
+ 130:	0096d463          	bge	a3,s1,138 <mini_pad+0x1a>
+ 134:	84b6                	mv	s1,a3
+		overflow = 1;
+ 136:	4305                	li	t1,1
+	for(i = pad_to - len; i > 0; i --) {
+ 138:	40968433          	sub	s0,a3,s1
+		*(pbuffer++) = pad_char;
+ 13c:	00045363          	bgez	s0,142 <mini_pad+0x24>
+ 140:	4401                	li	s0,0
+ 142:	8622                	mv	a2,s0
+ 144:	853a                	mv	a0,a4
+ 146:	c23e                	sw	a5,4(sp)
+ 148:	c01a                	sw	t1,0(sp)
+ 14a:	2b25                	jal	682 <memset>
+ 14c:	4302                	lw	t1,0(sp)
+ 14e:	4792                	lw	a5,4(sp)
+ 150:	872a                	mv	a4,a0
+ 152:	008506b3          	add	a3,a0,s0
+ 156:	4601                	li	a2,0
+	for(i = len; i > 0; i --) {
+ 158:	40c485b3          	sub	a1,s1,a2
+ 15c:	04b04463          	bgtz	a1,1a4 <mini_pad+0x86>
+ 160:	0004d363          	bgez	s1,166 <mini_pad+0x48>
+ 164:	4481                	li	s1,0
+ 166:	00968633          	add	a2,a3,s1
+	len = pbuffer - buffer;
+ 16a:	40e60533          	sub	a0,a2,a4
+	if(overflow) {
+ 16e:	02030463          	beqz	t1,196 <mini_pad+0x78>
+		for (i = 0; i < 3 && pbuffer > buffer; i ++) {
+ 172:	02c77263          	bgeu	a4,a2,196 <mini_pad+0x78>
+			*(pbuffer-- - 1) = '*';
+ 176:	02a00793          	li	a5,42
+ 17a:	fef60fa3          	sb	a5,-1(a2)
+ 17e:	fff60693          	addi	a3,a2,-1
+		for (i = 0; i < 3 && pbuffer > buffer; i ++) {
+ 182:	00d77a63          	bgeu	a4,a3,196 <mini_pad+0x78>
+			*(pbuffer-- - 1) = '*';
+ 186:	fef60f23          	sb	a5,-2(a2)
+ 18a:	ffe60693          	addi	a3,a2,-2
+		for (i = 0; i < 3 && pbuffer > buffer; i ++) {
+ 18e:	00d77463          	bgeu	a4,a3,196 <mini_pad+0x78>
+			*(pbuffer-- - 1) = '*';
+ 192:	fef60ea3          	sb	a5,-3(a2)
+}
+ 196:	40c2                	lw	ra,16(sp)
+ 198:	4432                	lw	s0,12(sp)
+ 19a:	44a2                	lw	s1,8(sp)
+ 19c:	0151                	addi	sp,sp,20
+ 19e:	8082                	ret
+	if(pad_to == 0) pad_to = len;
+ 1a0:	86a6                	mv	a3,s1
+ 1a2:	bf59                	j	138 <mini_pad+0x1a>
+		*(pbuffer++) = *(ptr++);
+ 1a4:	00c785b3          	add	a1,a5,a2
+ 1a8:	0005c503          	lbu	a0,0(a1)
+ 1ac:	00c685b3          	add	a1,a3,a2
+ 1b0:	0605                	addi	a2,a2,1
+ 1b2:	00a58023          	sb	a0,0(a1)
+	for(i = len; i > 0; i --) {
+ 1b6:	b74d                	j	158 <mini_pad+0x3a>
+
+000001b8 <mini_itoa.part.0>:
+mini_itoa(long value, unsigned int radix, int uppercase, int unsig,
+ 1b8:	1101                	addi	sp,sp,-32
+ 1ba:	ce06                	sw	ra,28(sp)
+ 1bc:	cc22                	sw	s0,24(sp)
+ 1be:	ca26                	sw	s1,20(sp)
+	int	negative = 0;
+ 1c0:	c002                	sw	zero,0(sp)
+mini_itoa(long value, unsigned int radix, int uppercase, int unsig,
+ 1c2:	832a                	mv	t1,a0
+	if (value < 0 && !unsig) {
+ 1c4:	00055763          	bgez	a0,1d2 <mini_itoa.part.0+0x1a>
+ 1c8:	e689                	bnez	a3,1d2 <mini_itoa.part.0+0x1a>
+		negative = 1;
+ 1ca:	4785                	li	a5,1
+		value = -value;
+ 1cc:	40a00333          	neg	t1,a0
+		negative = 1;
+ 1d0:	c03e                	sw	a5,0(sp)
+ 1d2:	06100413          	li	s0,97
+ 1d6:	c219                	beqz	a2,1dc <mini_itoa.part.0+0x24>
+ 1d8:	04100413          	li	s0,65
+	int	negative = 0;
+ 1dc:	84ba                	mv	s1,a4
+		*(pbuffer++) = (digit < 10 ? '0' + digit : (uppercase ? 'A' : 'a') + digit - 10);
+ 1de:	1459                	addi	s0,s0,-10
+		int digit = value % radix;
+ 1e0:	851a                	mv	a0,t1
+ 1e2:	c83a                	sw	a4,16(sp)
+ 1e4:	c21a                	sw	t1,4(sp)
+ 1e6:	c62e                	sw	a1,12(sp)
+ 1e8:	c41a                	sw	t1,8(sp)
+ 1ea:	35ed                	jal	d4 <__umodsi3>
+		*(pbuffer++) = (digit < 10 ? '0' + digit : (uppercase ? 'A' : 'a') + digit - 10);
+ 1ec:	47a5                	li	a5,9
+ 1ee:	4322                	lw	t1,8(sp)
+ 1f0:	45b2                	lw	a1,12(sp)
+ 1f2:	4742                	lw	a4,16(sp)
+ 1f4:	0ff57693          	andi	a3,a0,255
+ 1f8:	06a7e163          	bltu	a5,a0,25a <mini_itoa.part.0+0xa2>
+ 1fc:	03068693          	addi	a3,a3,48
+ 200:	0ff6f693          	andi	a3,a3,255
+ 204:	00148793          	addi	a5,s1,1
+ 208:	00d48023          	sb	a3,0(s1)
+		value /= radix;
+ 20c:	851a                	mv	a0,t1
+ 20e:	c83a                	sw	a4,16(sp)
+		*(pbuffer++) = (digit < 10 ? '0' + digit : (uppercase ? 'A' : 'a') + digit - 10);
+ 210:	c63e                	sw	a5,12(sp)
+		value /= radix;
+ 212:	c42e                	sw	a1,8(sp)
+ 214:	3d51                	jal	a8 <__hidden___udivsi3>
+	} while (value > 0);
+ 216:	4692                	lw	a3,4(sp)
+ 218:	45a2                	lw	a1,8(sp)
+ 21a:	47b2                	lw	a5,12(sp)
+ 21c:	4742                	lw	a4,16(sp)
+		value /= radix;
+ 21e:	832a                	mv	t1,a0
+	} while (value > 0);
+ 220:	02b6fb63          	bgeu	a3,a1,256 <mini_itoa.part.0+0x9e>
+	if (negative)
+ 224:	4682                	lw	a3,0(sp)
+ 226:	c699                	beqz	a3,234 <mini_itoa.part.0+0x7c>
+		*(pbuffer++) = '-';
+ 228:	02d00693          	li	a3,45
+ 22c:	00d78023          	sb	a3,0(a5)
+ 230:	00248793          	addi	a5,s1,2
+	len = (pbuffer - buffer);
+ 234:	40e78533          	sub	a0,a5,a4
+	for (i = 0; i < len / 2; i++) {
+ 238:	01f55693          	srli	a3,a0,0x1f
+ 23c:	96aa                	add	a3,a3,a0
+	*(pbuffer) = '\0';
+ 23e:	00078023          	sb	zero,0(a5)
+	for (i = 0; i < len / 2; i++) {
+ 242:	8685                	srai	a3,a3,0x1
+ 244:	4601                	li	a2,0
+ 246:	17fd                	addi	a5,a5,-1
+ 248:	00d64b63          	blt	a2,a3,25e <mini_itoa.part.0+0xa6>
+}
+ 24c:	40f2                	lw	ra,28(sp)
+ 24e:	4462                	lw	s0,24(sp)
+ 250:	44d2                	lw	s1,20(sp)
+ 252:	6105                	addi	sp,sp,32
+ 254:	8082                	ret
+	} while (value > 0);
+ 256:	84be                	mv	s1,a5
+ 258:	b761                	j	1e0 <mini_itoa.part.0+0x28>
+		*(pbuffer++) = (digit < 10 ? '0' + digit : (uppercase ? 'A' : 'a') + digit - 10);
+ 25a:	96a2                	add	a3,a3,s0
+ 25c:	b755                	j	200 <mini_itoa.part.0+0x48>
+		char j = buffer[i];
+ 25e:	00c705b3          	add	a1,a4,a2
+		buffer[i] = buffer[len-i-1];
+ 262:	0007c283          	lbu	t0,0(a5)
+		char j = buffer[i];
+ 266:	0005c303          	lbu	t1,0(a1)
+	for (i = 0; i < len / 2; i++) {
+ 26a:	0605                	addi	a2,a2,1
+		buffer[i] = buffer[len-i-1];
+ 26c:	00558023          	sb	t0,0(a1)
+		buffer[len-i-1] = j;
+ 270:	00678023          	sb	t1,0(a5)
+	for (i = 0; i < len / 2; i++) {
+ 274:	bfc9                	j	246 <mini_itoa.part.0+0x8e>
+
+00000276 <__enable_irq>:
+ */
+RV_STATIC_INLINE void __enable_irq()
+{
+  uint32_t result;
+
+    __asm volatile(
+ 276:	300027f3          	csrr	a5,mstatus
+#if __GNUC__ > 10
+		".option arch, +zicsr\n"
+#endif
+		"csrr %0," "mstatus": "=r"(result));
+  result |= 0x88;
+ 27a:	0887e793          	ori	a5,a5,136
+  __asm volatile ("csrw mstatus, %0" : : "r" (result) );
+ 27e:	30079073          	csrw	mstatus,a5
+}
+ 282:	8082                	ret
+
+00000284 <__disable_irq>:
+ */
+RV_STATIC_INLINE void __disable_irq()
+{
+  uint32_t result;
+
+    __asm volatile(
+ 284:	300027f3          	csrr	a5,mstatus
+#if __GNUC__ > 10
+		".option arch, +zicsr\n"
+#endif
+		"csrr %0," "mstatus": "=r"(result));
+  result &= ~0x88;
+ 288:	f777f793          	andi	a5,a5,-137
+  __asm volatile ("csrw mstatus, %0" : : "r" (result) );
+ 28c:	30079073          	csrw	mstatus,a5
+}
+ 290:	8082                	ret
+
+00000292 <setAnimation>:
+		asm volatile("nop\nnop\nnop\nnop\nnop\nnop");
+		asm volatile("nop\nnop\nnop\nnop\nnop\nnop");
+	}
+}
+
+void setAnimation(uint8_t section, uint8_t animation){
+ 292:	1141                	addi	sp,sp,-16
+ 294:	c426                	sw	s1,8(sp)
+ 296:	c622                	sw	s0,12(sp)
+	uint32_t colorSel;
+	uint8_t led_max = section ? NUM_LEDS : LED_SPLIT;
+ 298:	44a5                	li	s1,9
+ 29a:	c119                	beqz	a0,2a0 <setAnimation+0xe>
+ 29c:	44c1                	li	s1,16
+	uint8_t led_min = section ? LED_SPLIT : 0;
+ 29e:	4525                	li	a0,9
+	uint8_t step = (uint8_t)udiv32(255, led_max-led_min);
+ 2a0:	40a48333          	sub	t1,s1,a0
+}
+
+uint32_t udiv32(uint32_t n, uint32_t d) {
+    // n is dividend, d is divisor
+    // store the result in q: q = n / d
+    uint32_t q = 0;
+ 2a4:	4681                	li	a3,0
+	uint8_t step = (uint8_t)udiv32(255, led_max-led_min);
+ 2a6:	0ff00713          	li	a4,255
+        // determine to which power of two the divisor still fits the dividend
+        //
+        // i.e.: we intend to subtract the divisor multiplied by powers of two
+        // which in turn gives us a one in the binary representation 
+        // of the result
+        while (n >= (d_t << 1) && ++i)
+ 2aa:	547d                	li	s0,-1
+	uint8_t step = (uint8_t)udiv32(255, led_max-led_min);
+ 2ac:	861a                	mv	a2,t1
+        uint32_t i = 0, d_t = d;
+ 2ae:	4781                	li	a5,0
+ 2b0:	82b2                	mv	t0,a2
+        while (n >= (d_t << 1) && ++i)
+ 2b2:	0606                	slli	a2,a2,0x1
+ 2b4:	00c76763          	bltu	a4,a2,2c2 <setAnimation+0x30>
+ 2b8:	00178393          	addi	t2,a5,1
+ 2bc:	06879063          	bne	a5,s0,31c <setAnimation+0x8a>
+ 2c0:	4781                	li	a5,0
+            d_t <<= 1;
+        // set the corresponding bit in the result
+        q |= 1 << i;
+ 2c2:	4605                	li	a2,1
+ 2c4:	00f617b3          	sll	a5,a2,a5
+        // subtract the multiple of the divisor to be left with the remainder
+        n -= d_t;
+ 2c8:	40570733          	sub	a4,a4,t0
+        q |= 1 << i;
+ 2cc:	8edd                	or	a3,a3,a5
+    while (n >= d) {
+ 2ce:	fc677fe3          	bgeu	a4,t1,2ac <setAnimation+0x1a>
+	uint8_t step = (uint8_t)udiv32(255, led_max-led_min);
+ 2d2:	0ff6f793          	andi	a5,a3,255
+ 2d6:	c03e                	sw	a5,0(sp)
+				if(i == slowFrame) colorSel = Color(64,0,0);
+ 2d8:	9811c283          	lbu	t0,-1663(gp) # 20000181 <slowFrame>
+	uint32_t base = color_wheel(frame + offset);
+ 2dc:	9821c783          	lbu	a5,-1662(gp) # 20000182 <frame>
+ 2e0:	00251713          	slli	a4,a0,0x2
+ 2e4:	98418693          	addi	a3,gp,-1660 # 20000184 <strip>
+				writePixel(i, Color(sineTable[frame],0,0));
+ 2e8:	6305                	lui	t1,0x1
+ 2ea:	96ba                	add	a3,a3,a4
+				if(slowFrame >= led_max + 6) colorSel = 0;
+ 2ec:	00548613          	addi	a2,s1,5
+ 2f0:	fff7c713          	not	a4,a5
+    40,  42,  44,  47,  49,  52,  54,  57,  59,  62,  65,  67,  70,  73,  76,
+    79,  82,  85,  88,  90,  93,  97,  100, 103, 106, 109, 112, 115, 118, 121,
+    124};
+
+static uint32_t Color(uint8_t r, uint8_t g, uint8_t b) {
+    return ((uint32_t)g << 16) | ((uint32_t)r << 8) | b;
+ 2f4:	63c1                	lui	t2,0x10
+				writePixel(i, Color(sineTable[frame],0,0));
+ 2f6:	95430313          	addi	t1,t1,-1708 # 954 <sineTable>
+ 2fa:	0ff77713          	andi	a4,a4,255
+ 2fe:	40a28533          	sub	a0,t0,a0
+				if(slowFrame >= led_max + 6) colorSel = 0;
+ 302:	c232                	sw	a2,4(sp)
+ 304:	13fd                	addi	t2,t2,-1
+				writePixel(i, Color(sineTable[frame],0,0));
+ 306:	933e                	add	t1,t1,a5
+	for(uint8_t i=led_min; i<led_max; i++){
+ 308:	40a28633          	sub	a2,t0,a0
+ 30c:	0ff67613          	andi	a2,a2,255
+ 310:	00966863          	bltu	a2,s1,320 <setAnimation+0x8e>
+}
+ 314:	4432                	lw	s0,12(sp)
+ 316:	44a2                	lw	s1,8(sp)
+ 318:	0141                	addi	sp,sp,16
+ 31a:	8082                	ret
+        while (n >= (d_t << 1) && ++i)
+ 31c:	879e                	mv	a5,t2
+ 31e:	bf49                	j	2b0 <setAnimation+0x1e>
+		switch(animation){
+ 320:	4789                	li	a5,2
+ 322:	02f58763          	beq	a1,a5,350 <setAnimation+0xbe>
+ 326:	00b7e763          	bltu	a5,a1,334 <setAnimation+0xa2>
+ 32a:	ed99                	bnez	a1,348 <setAnimation+0xb6>
+	if(pixel < NUM_LEDS) strip[pixel] = color;
+ 32c:	004007b7          	lui	a5,0x400
+ 330:	c29c                	sw	a5,0(a3)
+ 332:	a021                	j	33a <setAnimation+0xa8>
+		switch(animation){
+ 334:	478d                	li	a5,3
+ 336:	08f58d63          	beq	a1,a5,3d0 <setAnimation+0x13e>
+	for(uint8_t i=led_min; i<led_max; i++){
+ 33a:	4782                	lw	a5,0(sp)
+ 33c:	0691                	addi	a3,a3,4
+ 33e:	157d                	addi	a0,a0,-1
+ 340:	8f1d                	sub	a4,a4,a5
+ 342:	0ff77713          	andi	a4,a4,255
+ 346:	b7c9                	j	308 <setAnimation+0x76>
+ 348:	00034783          	lbu	a5,0(t1)
+ 34c:	07a2                	slli	a5,a5,0x8
+ 34e:	b7cd                	j	330 <setAnimation+0x9e>
+ * The colours are a transition r -> g -> b -> back to r
+ * Inspired by the Adafruit examples.
+ */
+static uint32_t color_wheel(uint8_t pos) {
+  pos = 255 - pos;
+  if (pos < 85) {
+ 350:	05400793          	li	a5,84
+ 354:	02e7eb63          	bltu	a5,a4,38a <setAnimation+0xf8>
+    return ((uint32_t)(255 - pos * 3) << 16) | ((uint32_t)(0) << 8) | (pos * 3);
+ 358:	00271793          	slli	a5,a4,0x2
+ 35c:	40f707b3          	sub	a5,a4,a5
+ 360:	0ff78793          	addi	a5,a5,255 # 4000ff <main.c.698ea652+0x3fe193>
+ 364:	00171613          	slli	a2,a4,0x1
+ 368:	07c2                	slli	a5,a5,0x10
+ 36a:	963a                	add	a2,a2,a4
+  } else if(pos < 170) {
+    pos -= 85;
+    return ((uint32_t)(0) << 16) | ((uint32_t)(pos * 3) << 8) | (255 - pos * 3);
+ 36c:	8fd1                	or	a5,a5,a2
+	uint8_t g = GREEN_VAL(base)>> 4;
+ 36e:	0147d413          	srli	s0,a5,0x14
+	uint8_t b = BLUE_VAL(base) >> 4;
+ 372:	0047d613          	srli	a2,a5,0x4
+    return ((uint32_t)g << 16) | ((uint32_t)r << 8) | b;
+ 376:	0442                	slli	s0,s0,0x10
+ 378:	8a3d                	andi	a2,a2,15
+ 37a:	8e41                	or	a2,a2,s0
+	uint8_t r = RED_VAL(base)>> 4;
+ 37c:	00c7d413          	srli	s0,a5,0xc
+ 380:	883d                	andi	s0,s0,15
+ 382:	0422                	slli	s0,s0,0x8
+ 384:	8e41                	or	a2,a2,s0
+	if(pixel < NUM_LEDS) strip[pixel] = color;
+ 386:	c290                	sw	a2,0(a3)
+ 388:	bf4d                	j	33a <setAnimation+0xa8>
+  } else if(pos < 170) {
+ 38a:	0a900793          	li	a5,169
+ 38e:	02e7e063          	bltu	a5,a4,3ae <setAnimation+0x11c>
+    pos -= 85;
+ 392:	fab70613          	addi	a2,a4,-85
+    return ((uint32_t)(0) << 16) | ((uint32_t)(pos * 3) << 8) | (255 - pos * 3);
+ 396:	0ff67613          	andi	a2,a2,255
+ 39a:	00161793          	slli	a5,a2,0x1
+ 39e:	00261413          	slli	s0,a2,0x2
+ 3a2:	97b2                	add	a5,a5,a2
+ 3a4:	8e01                	sub	a2,a2,s0
+ 3a6:	07a2                	slli	a5,a5,0x8
+ 3a8:	0ff60613          	addi	a2,a2,255
+ 3ac:	b7c1                	j	36c <setAnimation+0xda>
+  } else {
+    pos -= 170;
+ 3ae:	05670613          	addi	a2,a4,86
+    return ((uint32_t)(pos * 3) << 16) | ((uint32_t)(255 - pos * 3) << 8) | (0);
+ 3b2:	0ff67613          	andi	a2,a2,255
+ 3b6:	00261793          	slli	a5,a2,0x2
+ 3ba:	40f607b3          	sub	a5,a2,a5
+ 3be:	00161413          	slli	s0,a2,0x1
+ 3c2:	0ff78793          	addi	a5,a5,255
+ 3c6:	9432                	add	s0,s0,a2
+ 3c8:	07a2                	slli	a5,a5,0x8
+ 3ca:	0442                	slli	s0,s0,0x10
+ 3cc:	8fc1                	or	a5,a5,s0
+ 3ce:	b745                	j	36e <setAnimation+0xdc>
+				if(slowFrame >= led_max + 6) colorSel = 0;
+ 3d0:	4412                	lw	s0,4(sp)
+ 3d2:	4781                	li	a5,0
+ 3d4:	00546e63          	bltu	s0,t0,3f0 <setAnimation+0x15e>
+				else if(i < slowFrame) colorSel = Color((64 - ((slowFrame - i) << 3)) >> (slowFrame - i),0,0);
+ 3d8:	00567c63          	bgeu	a2,t0,3f0 <setAnimation+0x15e>
+ 3dc:	40a007b3          	neg	a5,a0
+ 3e0:	078e                	slli	a5,a5,0x3
+ 3e2:	04078793          	addi	a5,a5,64
+ 3e6:	40a7d7b3          	sra	a5,a5,a0
+    return ((uint32_t)g << 16) | ((uint32_t)r << 8) | b;
+ 3ea:	07a2                	slli	a5,a5,0x8
+ 3ec:	0077f7b3          	and	a5,a5,t2
+				if(colorSel & 0x00C000) colorSel = 0;
+ 3f0:	6631                	lui	a2,0xc
+ 3f2:	8e7d                	and	a2,a2,a5
+ 3f4:	de15                	beqz	a2,330 <setAnimation+0x9e>
+ 3f6:	4781                	li	a5,0
+	if(pixel < NUM_LEDS) strip[pixel] = color;
+ 3f8:	bf25                	j	330 <setAnimation+0x9e>
+
+000003fa <_write.constprop.0>:
+	USART1->BRR = uartBRR;
+	USART1->CTLR1 |= CTLR1_UE_Set;
+}
+
+// For debug writing to the UART.
+int _write(int fd, const char *buf, int size)
+ 3fa:	872a                	mv	a4,a0
+{
+	for(int i = 0; i < size; i++){
+ 3fc:	4781                	li	a5,0
+int _write(int fd, const char *buf, int size)
+ 3fe:	852e                	mv	a0,a1
+	    while( !(USART1->STATR & USART_FLAG_TC));
+ 400:	40014637          	lui	a2,0x40014
+	for(int i = 0; i < size; i++){
+ 404:	00a7c363          	blt	a5,a0,40a <_write.constprop.0+0x10>
+	    USART1->DATAR = *buf++;
+	}
+	return size;
+}
+ 408:	8082                	ret
+	    while( !(USART1->STATR & USART_FLAG_TC));
+ 40a:	80065683          	lhu	a3,-2048(a2) # 40013800 <__global_pointer$+0x20013000>
+ 40e:	0406f693          	andi	a3,a3,64
+ 412:	dee5                	beqz	a3,40a <_write.constprop.0+0x10>
+	    USART1->DATAR = *buf++;
+ 414:	00f706b3          	add	a3,a4,a5
+ 418:	0006c683          	lbu	a3,0(a3)
+	for(int i = 0; i < size; i++){
+ 41c:	0785                	addi	a5,a5,1
+	    USART1->DATAR = *buf++;
+ 41e:	80d61223          	sh	a3,-2044(a2)
+ 422:	b7cd                	j	404 <_write.constprop.0+0xa>
+
+00000424 <__puts_uart>:
+{
+ 424:	1151                	addi	sp,sp,-12
+ 426:	c222                	sw	s0,4(sp)
+ 428:	c406                	sw	ra,8(sp)
+ 42a:	842e                	mv	s0,a1
+	_write( 0, s, len );
+ 42c:	37f9                	jal	3fa <_write.constprop.0>
+}
+ 42e:	40a2                	lw	ra,8(sp)
+ 430:	8522                	mv	a0,s0
+ 432:	4412                	lw	s0,4(sp)
+ 434:	0131                	addi	sp,sp,12
+ 436:	8082                	ret
+
+00000438 <handle_reset>:
+	asm volatile( "\n\
+ 438:	20000197          	auipc	gp,0x20000
+ 43c:	3c818193          	addi	gp,gp,968 # 20000800 <__global_pointer$>
+ 440:	00018113          	mv	sp,gp
+ 444:	08000513          	li	a0,128
+ 448:	30051073          	csrw	mstatus,a0
+ 44c:	468d                	li	a3,3
+ 44e:	00000517          	auipc	a0,0x0
+ 452:	bb250513          	addi	a0,a0,-1102 # 0 <InterruptVector>
+ 456:	8d55                	or	a0,a0,a3
+ 458:	30551073          	csrw	mtvec,a0
+asm volatile(
+ 45c:	98018513          	addi	a0,gp,-1664 # 20000180 <slowFlop>
+ 460:	9c418593          	addi	a1,gp,-1596 # 200001c4 <_ebss>
+ 464:	4601                	li	a2,0
+ 466:	00b55663          	bge	a0,a1,472 <handle_reset+0x3a>
+ 46a:	c110                	sw	a2,0(a0)
+ 46c:	0511                	addi	a0,a0,4
+ 46e:	feb54ee3          	blt	a0,a1,46a <handle_reset+0x32>
+ 472:	00000517          	auipc	a0,0x0
+ 476:	60250513          	addi	a0,a0,1538 # a74 <_data_lma>
+ 47a:	20000597          	auipc	a1,0x20000
+ 47e:	b8658593          	addi	a1,a1,-1146 # 20000000 <ReadTouchPinSafe.constprop.0>
+ 482:	20000617          	auipc	a2,0x20000
+ 486:	cfe60613          	addi	a2,a2,-770 # 20000180 <slowFlop>
+ 48a:	00c58863          	beq	a1,a2,49a <handle_reset+0x62>
+ 48e:	4114                	lw	a3,0(a0)
+ 490:	c194                	sw	a3,0(a1)
+ 492:	0511                	addi	a0,a0,4
+ 494:	0591                	addi	a1,a1,4
+ 496:	fec59ae3          	bne	a1,a2,48a <handle_reset+0x52>
+	SysTick->CTLR = 5;
+ 49a:	e000f7b7          	lui	a5,0xe000f
+ 49e:	4715                	li	a4,5
+ 4a0:	c398                	sw	a4,0(a5)
+asm volatile(
+ 4a2:	72e00793          	li	a5,1838
+ 4a6:	34179073          	csrw	mepc,a5
+ 4aa:	30200073          	mret
+
+000004ae <ADC1_IRQHandler>:
+	asm volatile( "1: j 1b" );
+ 4ae:	a001                	j	4ae <ADC1_IRQHandler>
+
+000004b0 <NMI_Handler>:
+	RCC->INTR |= RCC_CSSC;	// clear the clock security int flag
+ 4b0:	40021737          	lui	a4,0x40021
+ 4b4:	471c                	lw	a5,8(a4)
+ 4b6:	008006b7          	lui	a3,0x800
+ 4ba:	8fd5                	or	a5,a5,a3
+ 4bc:	c71c                	sw	a5,8(a4)
+
+000004be <strlen>:
+size_t strlen(const char *s) { const char *a = s;for (; *s; s++);return s-a; }
+ 4be:	87aa                	mv	a5,a0
+ 4c0:	0007c703          	lbu	a4,0(a5) # e000f000 <__global_pointer$+0xc000e800>
+ 4c4:	e701                	bnez	a4,4cc <strlen+0xe>
+ 4c6:	40a78533          	sub	a0,a5,a0
+ 4ca:	8082                	ret
+ 4cc:	0785                	addi	a5,a5,1
+ 4ce:	bfcd                	j	4c0 <strlen+0x2>
+
+000004d0 <printf>:
+{
+ 4d0:	f9410113          	addi	sp,sp,-108
+ 4d4:	d4be                	sw	a5,104(sp)
+	va_start( args, format );
+ 4d6:	08bc                	addi	a5,sp,88
+{
+ 4d8:	c6a6                	sw	s1,76(sp)
+ 4da:	ca86                	sw	ra,84(sp)
+ 4dc:	c8a2                	sw	s0,80(sp)
+ 4de:	84aa                	mv	s1,a0
+ 4e0:	ccae                	sw	a1,88(sp)
+ 4e2:	ceb2                	sw	a2,92(sp)
+ 4e4:	d0b6                	sw	a3,96(sp)
+ 4e6:	d2ba                	sw	a4,100(sp)
+	va_start( args, format );
+ 4e8:	cc3e                	sw	a5,24(sp)
+	int n = 0;
+ 4ea:	c402                	sw	zero,8(sp)
+	while ((ch=*(fmt++))) {
+ 4ec:	0004c703          	lbu	a4,0(s1)
+ 4f0:	00148413          	addi	s0,s1,1
+ 4f4:	00e10ba3          	sb	a4,23(sp)
+ 4f8:	eb01                	bnez	a4,508 <printf+0x38>
+}
+ 4fa:	40d6                	lw	ra,84(sp)
+ 4fc:	4446                	lw	s0,80(sp)
+ 4fe:	4522                	lw	a0,8(sp)
+ 500:	44b6                	lw	s1,76(sp)
+ 502:	06c10113          	addi	sp,sp,108
+ 506:	8082                	ret
+		if (ch!='%') {
+ 508:	02500693          	li	a3,37
+ 50c:	00d70e63          	beq	a4,a3,528 <printf+0x58>
+			len = puts(&ch, len, buf);
+ 510:	4601                	li	a2,0
+ 512:	4585                	li	a1,1
+ 514:	01710513          	addi	a0,sp,23
+ 518:	c03e                	sw	a5,0(sp)
+	while ((ch=*(fmt++))) {
+ 51a:	84a2                	mv	s1,s0
+			len = puts(&ch, len, buf);
+ 51c:	3721                	jal	424 <__puts_uart>
+		n = n + len;
+ 51e:	47a2                	lw	a5,8(sp)
+ 520:	97aa                	add	a5,a5,a0
+ 522:	c43e                	sw	a5,8(sp)
+ 524:	4782                	lw	a5,0(sp)
+ 526:	b7d9                	j	4ec <printf+0x1c>
+			ch=*(fmt++);
+ 528:	0014c683          	lbu	a3,1(s1)
+			if (ch == '0') pad_char = '0';
+ 52c:	03000613          	li	a2,48
+			ch=*(fmt++);
+ 530:	00248713          	addi	a4,s1,2
+ 534:	00d10ba3          	sb	a3,23(sp)
+			if (ch == '0') pad_char = '0';
+ 538:	03000413          	li	s0,48
+ 53c:	08c69063          	bne	a3,a2,5bc <printf+0xec>
+				ch=*(fmt++);
+ 540:	84ba                	mv	s1,a4
+ 542:	4601                	li	a2,0
+ 544:	4701                	li	a4,0
+			while (ch >= '0' && ch <= '9') {
+ 546:	4525                	li	a0,9
+ 548:	a811                	j	55c <printf+0x8c>
+				pad_to = pad_to * 10 + (ch - '0');
+ 54a:	00271693          	slli	a3,a4,0x2
+				ch=*(fmt++);
+ 54e:	0485                	addi	s1,s1,1
+				pad_to = pad_to * 10 + (ch - '0');
+ 550:	9736                	add	a4,a4,a3
+				ch=*(fmt++);
+ 552:	fff4c683          	lbu	a3,-1(s1)
+				pad_to = pad_to * 10 + (ch - '0');
+ 556:	0706                	slli	a4,a4,0x1
+ 558:	972e                	add	a4,a4,a1
+				ch=*(fmt++);
+ 55a:	4605                	li	a2,1
+			while (ch >= '0' && ch <= '9') {
+ 55c:	fd068593          	addi	a1,a3,-48 # 7fffd0 <main.c.698ea652+0x7fe064>
+ 560:	0ff5f313          	andi	t1,a1,255
+ 564:	fe6573e3          	bgeu	a0,t1,54a <printf+0x7a>
+ 568:	c219                	beqz	a2,56e <printf+0x9e>
+ 56a:	00d10ba3          	sb	a3,23(sp)
+ 56e:	c23a                	sw	a4,4(sp)
+ 570:	4661                	li	a2,24
+ 572:	00e65363          	bge	a2,a4,578 <printf+0xa8>
+ 576:	c232                	sw	a2,4(sp)
+			if (ch == 'l') {
+ 578:	06c00593          	li	a1,108
+			char l = 0;
+ 57c:	4601                	li	a2,0
+			if (ch == 'l') {
+ 57e:	00b69863          	bne	a3,a1,58e <printf+0xbe>
+				ch=*(fmt++);
+ 582:	0004c683          	lbu	a3,0(s1)
+				l = 1;
+ 586:	4605                	li	a2,1
+				ch=*(fmt++);
+ 588:	0485                	addi	s1,s1,1
+ 58a:	00d10ba3          	sb	a3,23(sp)
+			switch (ch) {
+ 58e:	01714683          	lbu	a3,23(sp)
+ 592:	06400593          	li	a1,100
+ 596:	06b68363          	beq	a3,a1,5fc <printf+0x12c>
+ 59a:	02d5e463          	bltu	a1,a3,5c2 <printf+0xf2>
+ 59e:	05800713          	li	a4,88
+ 5a2:	08e68f63          	beq	a3,a4,640 <printf+0x170>
+ 5a6:	06300713          	li	a4,99
+ 5aa:	0ae68c63          	beq	a3,a4,662 <printf+0x192>
+ 5ae:	d6b1                	beqz	a3,4fa <printf+0x2a>
+ 5b0:	c03e                	sw	a5,0(sp)
+					len = puts(&ch, len, buf);
+ 5b2:	4601                	li	a2,0
+ 5b4:	4585                	li	a1,1
+ 5b6:	01710513          	addi	a0,sp,23
+ 5ba:	a0bd                	j	628 <printf+0x158>
+			char pad_char = ' ';
+ 5bc:	02000413          	li	s0,32
+ 5c0:	b741                	j	540 <printf+0x70>
+			switch (ch) {
+ 5c2:	07500593          	li	a1,117
+ 5c6:	02b68b63          	beq	a3,a1,5fc <printf+0x12c>
+ 5ca:	07800613          	li	a2,120
+ 5ce:	06c68963          	beq	a3,a2,640 <printf+0x170>
+ 5d2:	07300613          	li	a2,115
+ 5d6:	fcc69de3          	bne	a3,a2,5b0 <printf+0xe0>
+ 5da:	c83a                	sw	a4,16(sp)
+					ptr = va_arg(va, char*);
+ 5dc:	00478713          	addi	a4,a5,4
+ 5e0:	439c                	lw	a5,0(a5)
+ 5e2:	c03a                	sw	a4,0(sp)
+					len = mini_strlen(ptr);
+ 5e4:	853e                	mv	a0,a5
+ 5e6:	c63e                	sw	a5,12(sp)
+ 5e8:	3dd9                	jal	4be <strlen>
+					if (pad_to > 0) {
+ 5ea:	4742                	lw	a4,16(sp)
+ 5ec:	47b2                	lw	a5,12(sp)
+					len = mini_strlen(ptr);
+ 5ee:	85aa                	mv	a1,a0
+					if (pad_to > 0) {
+ 5f0:	c751                	beqz	a4,67c <printf+0x1ac>
+						len = mini_pad(ptr, len, pad_char, pad_to, bf);
+ 5f2:	4692                	lw	a3,4(sp)
+ 5f4:	0878                	addi	a4,sp,28
+ 5f6:	8622                	mv	a2,s0
+ 5f8:	853e                	mv	a0,a5
+ 5fa:	a01d                	j	620 <printf+0x150>
+						len = mini_itoa(va_arg(va, unsigned long), 10, 0, (ch=='u'), bf2);
+ 5fc:	00478713          	addi	a4,a5,4
+ 600:	c03a                	sw	a4,0(sp)
+					if(l) {
+ 602:	c60d                	beqz	a2,62c <printf+0x15c>
+						len = mini_itoa(va_arg(va, unsigned long), 10, 0, (ch=='u'), bf2);
+ 604:	f8b68693          	addi	a3,a3,-117
+ 608:	1858                	addi	a4,sp,52
+ 60a:	0016b693          	seqz	a3,a3
+ 60e:	4388                	lw	a0,0(a5)
+ 610:	4601                	li	a2,0
+ 612:	45a9                	li	a1,10
+ 614:	3655                	jal	1b8 <mini_itoa.part.0>
+					len = mini_pad(bf2, len, pad_char, pad_to, bf);
+ 616:	4692                	lw	a3,4(sp)
+ 618:	0878                	addi	a4,sp,28
+ 61a:	8622                	mv	a2,s0
+ 61c:	85aa                	mv	a1,a0
+					len = mini_pad(bf2, len, pad_char, pad_to, bf);
+ 61e:	1848                	addi	a0,sp,52
+ 620:	3cfd                	jal	11e <mini_pad>
+ 622:	85aa                	mv	a1,a0
+					len = puts(bf, len, buf);
+ 624:	4601                	li	a2,0
+ 626:	0868                	addi	a0,sp,28
+					len = puts(&ch, len, buf);
+ 628:	3bf5                	jal	424 <__puts_uart>
+ 62a:	bdd5                	j	51e <printf+0x4e>
+						if(ch == 'u') {
+ 62c:	07500713          	li	a4,117
+ 630:	00e69563          	bne	a3,a4,63a <printf+0x16a>
+ 634:	1858                	addi	a4,sp,52
+ 636:	4685                	li	a3,1
+ 638:	bfd9                	j	60e <printf+0x13e>
+ 63a:	1858                	addi	a4,sp,52
+ 63c:	4681                	li	a3,0
+ 63e:	bfc1                	j	60e <printf+0x13e>
+ 640:	4388                	lw	a0,0(a5)
+						len = mini_itoa(va_arg(va, unsigned long), 10, 0, (ch=='u'), bf2);
+ 642:	00478713          	addi	a4,a5,4
+						len = mini_itoa(va_arg(va, unsigned long), 16, (ch=='X'), 1, bf2);
+ 646:	fa868613          	addi	a2,a3,-88
+						len = mini_itoa(va_arg(va, unsigned long), 10, 0, (ch=='u'), bf2);
+ 64a:	c03a                	sw	a4,0(sp)
+ 64c:	4685                	li	a3,1
+ 64e:	1858                	addi	a4,sp,52
+ 650:	00163613          	seqz	a2,a2
+ 654:	45c1                	li	a1,16
+ 656:	368d                	jal	1b8 <mini_itoa.part.0>
+					len = mini_pad(bf2, len, pad_char, pad_to, bf);
+ 658:	4692                	lw	a3,4(sp)
+ 65a:	85aa                	mv	a1,a0
+ 65c:	0878                	addi	a4,sp,28
+ 65e:	8622                	mv	a2,s0
+ 660:	bf7d                	j	61e <printf+0x14e>
+					ch = (char)(va_arg(va, int));
+ 662:	00478713          	addi	a4,a5,4
+ 666:	439c                	lw	a5,0(a5)
+ 668:	c03a                	sw	a4,0(sp)
+					len = mini_pad(&ch, 1, pad_char, pad_to, bf);
+ 66a:	4692                	lw	a3,4(sp)
+					ch = (char)(va_arg(va, int));
+ 66c:	00f10ba3          	sb	a5,23(sp)
+					len = mini_pad(&ch, 1, pad_char, pad_to, bf);
+ 670:	0878                	addi	a4,sp,28
+ 672:	8622                	mv	a2,s0
+ 674:	4585                	li	a1,1
+ 676:	01710513          	addi	a0,sp,23
+ 67a:	b75d                	j	620 <printf+0x150>
+						len = puts(ptr, len, buf);
+ 67c:	4601                	li	a2,0
+ 67e:	853e                	mv	a0,a5
+ 680:	b765                	j	628 <printf+0x158>
+
+00000682 <memset>:
+void *memset(void *dest, int c, size_t n) { unsigned char *s = dest; for (; n; n--, s++) *s = c; return dest; }
+ 682:	962a                	add	a2,a2,a0
+ 684:	87aa                	mv	a5,a0
+ 686:	00c79363          	bne	a5,a2,68c <memset+0xa>
+ 68a:	8082                	ret
+ 68c:	00b78023          	sb	a1,0(a5)
+ 690:	0785                	addi	a5,a5,1
+ 692:	bfd5                	j	686 <memset+0x4>
+
+00000694 <SystemInit>:
+#define BASE_CTLR	(((FUNCONF_HSITRIM) << 3) | RCC_HSION | HSEBYP | RCC_CSS)
+//#define BASE_CTLR	(((FUNCONF_HSITRIM) << 3) | HSEBYP | RCC_CSS)	// disable HSI in HSE modes
+
+#if defined(FUNCONF_USE_HSI) && FUNCONF_USE_HSI
+	#if defined(FUNCONF_USE_PLL) && FUNCONF_USE_PLL
+		RCC->CFGR0 = RCC_HPRE_DIV1 | RCC_PLLSRC_HSI_Mul2;
+ 694:	400217b7          	lui	a5,0x40021
+		RCC->CTLR  = BASE_CTLR | RCC_HSION | RCC_PLLON; 			// Use HSI, enable PLL.
+ 698:	01080737          	lui	a4,0x1080
+		RCC->CFGR0 = RCC_HPRE_DIV1 | RCC_PLLSRC_HSI_Mul2;
+ 69c:	0007a223          	sw	zero,4(a5) # 40021004 <__global_pointer$+0x20020804>
+		RCC->CTLR  = BASE_CTLR | RCC_HSION | RCC_PLLON; 			// Use HSI, enable PLL.
+ 6a0:	08170713          	addi	a4,a4,129 # 1080081 <main.c.698ea652+0x107e115>
+ 6a4:	c398                	sw	a4,0(a5)
+		RCC->CTLR = BASE_CTLR | RCC_HSEON | RCC_PLLON;				// start PLL
+	#endif
+#endif
+
+#if FUNCONF_SYSTEM_CORE_CLOCK > 25000000
+	FLASH->ACTLR = FLASH_ACTLR_LATENCY_1;                   		//+1 Cycle Latency
+ 6a6:	4685                	li	a3,1
+ 6a8:	40022737          	lui	a4,0x40022
+ 6ac:	c314                	sw	a3,0(a4)
+#else
+	FLASH->ACTLR = FLASH_ACTLR_LATENCY_0;                   		// +0 Cycle Latency
+#endif
+
+	RCC->INTR  = 0x009F0000;                               			// Clear PLL, CSSC, HSE, HSI and LSI ready flags.
+ 6ae:	009f0737          	lui	a4,0x9f0
+ 6b2:	c798                	sw	a4,8(a5)
+
+#if defined(FUNCONF_USE_PLL) && FUNCONF_USE_PLL
+	while((RCC->CTLR & RCC_PLLRDY) == 0);                       	// Wait till PLL is ready
+ 6b4:	020006b7          	lui	a3,0x2000
+ 6b8:	40021737          	lui	a4,0x40021
+ 6bc:	431c                	lw	a5,0(a4)
+ 6be:	8ff5                	and	a5,a5,a3
+ 6c0:	dff5                	beqz	a5,6bc <SystemInit+0x28>
+	uint32_t tmp32 = RCC->CFGR0 & ~(0x03);							// clr the SW
+ 6c2:	435c                	lw	a5,4(a4)
+	RCC->CFGR0 = tmp32 | RCC_SW_PLL;                       			// Select PLL as system clock source
+	while ((RCC->CFGR0 & (uint32_t)RCC_SWS) != (uint32_t)0x08); 	// Wait till PLL is used as system clock source
+ 6c4:	4621                	li	a2,8
+	uint32_t tmp32 = RCC->CFGR0 & ~(0x03);							// clr the SW
+ 6c6:	9bf1                	andi	a5,a5,-4
+	RCC->CFGR0 = tmp32 | RCC_SW_PLL;                       			// Select PLL as system clock source
+ 6c8:	0027e793          	ori	a5,a5,2
+ 6cc:	c35c                	sw	a5,4(a4)
+	while ((RCC->CFGR0 & (uint32_t)RCC_SWS) != (uint32_t)0x08); 	// Wait till PLL is used as system clock source
+ 6ce:	400217b7          	lui	a5,0x40021
+ 6d2:	43d8                	lw	a4,4(a5)
+ 6d4:	8b31                	andi	a4,a4,12
+ 6d6:	fec71ee3          	bne	a4,a2,6d2 <SystemInit+0x3e>
+	RCC->APB2PCENR |= RCC_APB2Periph_GPIOD | RCC_APB2Periph_USART1;
+ 6da:	4f98                	lw	a4,24(a5)
+ 6dc:	6691                	lui	a3,0x4
+ 6de:	02068693          	addi	a3,a3,32 # 4020 <main.c.698ea652+0x20b4>
+ 6e2:	8f55                	or	a4,a4,a3
+ 6e4:	cf98                	sw	a4,24(a5)
+	GPIOD->CFGLR &= ~(0xf<<(4*5));
+ 6e6:	400117b7          	lui	a5,0x40011
+ 6ea:	40078793          	addi	a5,a5,1024 # 40011400 <__global_pointer$+0x20010c00>
+ 6ee:	4398                	lw	a4,0(a5)
+ 6f0:	ff1006b7          	lui	a3,0xff100
+ 6f4:	16fd                	addi	a3,a3,-1
+ 6f6:	8f75                	and	a4,a4,a3
+ 6f8:	c398                	sw	a4,0(a5)
+	GPIOD->CFGLR |= (GPIO_Speed_10MHz | GPIO_CNF_OUT_PP_AF)<<(4*5);
+ 6fa:	4398                	lw	a4,0(a5)
+ 6fc:	009006b7          	lui	a3,0x900
+ 700:	8f55                	or	a4,a4,a3
+ 702:	c398                	sw	a4,0(a5)
+	USART1->CTLR1 = USART_WordLength_8b | USART_Parity_No | USART_Mode_Tx;
+ 704:	400147b7          	lui	a5,0x40014
+ 708:	80c79623          	sh	a2,-2036(a5) # 4001380c <__global_pointer$+0x2001300c>
+	USART1->CTLR2 = USART_StopBits_1;
+ 70c:	80079823          	sh	zero,-2032(a5)
+	USART1->CTLR3 = USART_HardwareFlowControl_None;
+ 710:	80079a23          	sh	zero,-2028(a5)
+	USART1->BRR = uartBRR;
+ 714:	1a100713          	li	a4,417
+ 718:	80e79423          	sh	a4,-2040(a5)
+	USART1->CTLR1 |= CTLR1_UE_Set;
+ 71c:	80c7d703          	lhu	a4,-2036(a5)
+ 720:	6689                	lui	a3,0x2
+ 722:	0742                	slli	a4,a4,0x10
+ 724:	8341                	srli	a4,a4,0x10
+ 726:	8f55                	or	a4,a4,a3
+ 728:	80e79623          	sh	a4,-2036(a5)
+	SetupUART( UART_BRR );
+#endif
+#if defined( FUNCONF_USE_DEBUGPRINTF ) && FUNCONF_USE_DEBUGPRINTF
+	SetupDebugPrintf();
+#endif
+}
+ 72c:	8082                	ret
+
+0000072e <main>:
+{
+ 72e:	1141                	addi	sp,sp,-16
+ 730:	c606                	sw	ra,12(sp)
+ 732:	c422                	sw	s0,8(sp)
+ 734:	c226                	sw	s1,4(sp)
+	RCC->APB2PCENR |= RCC_APB2Periph_GPIOA | RCC_APB2Periph_GPIOD | RCC_APB2Periph_GPIOC | RCC_APB2Periph_ADC1;
+ 736:	40021437          	lui	s0,0x40021
+	SystemInit();
+ 73a:	3fa9                	jal	694 <SystemInit>
+	RCC->APB2PCENR |= RCC_APB2Periph_GPIOA | RCC_APB2Periph_GPIOD | RCC_APB2Periph_GPIOC | RCC_APB2Periph_ADC1;
+ 73c:	4c1c                	lw	a5,24(s0)
+	printf("initializing adc...");
+ 73e:	6505                	lui	a0,0x1
+ 740:	a5850513          	addi	a0,a0,-1448 # a58 <sineTable+0x104>
+	RCC->APB2PCENR |= RCC_APB2Periph_GPIOA | RCC_APB2Periph_GPIOD | RCC_APB2Periph_GPIOC | RCC_APB2Periph_ADC1;
+ 744:	2347e793          	ori	a5,a5,564
+ 748:	cc1c                	sw	a5,24(s0)
+	GPIOC->CFGLR &= ~(0xf<<(4*1));
+ 74a:	400117b7          	lui	a5,0x40011
+ 74e:	4398                	lw	a4,0(a5)
+ 750:	f0f77713          	andi	a4,a4,-241
+ 754:	c398                	sw	a4,0(a5)
+	GPIOC->CFGLR |= (GPIO_Speed_10MHz | GPIO_CNF_OUT_PP)<<(4*1);
+ 756:	4398                	lw	a4,0(a5)
+ 758:	01076713          	ori	a4,a4,16
+ 75c:	c398                	sw	a4,0(a5)
+	printf("initializing adc...");
+ 75e:	3b8d                	jal	4d0 <printf>
+
+static void InitTouchADC( );
+void InitTouchADC( )
+{
+	// ADCCLK = 24 MHz => RCC_ADCPRE = 0: divide sys clock by 2
+	RCC->CFGR0 &= ~(0x1F<<11);
+ 760:	405c                	lw	a5,4(s0)
+ 762:	7741                	lui	a4,0xffff0
+ 764:	7ff70713          	addi	a4,a4,2047 # ffff07ff <__global_pointer$+0xdffeffff>
+ 768:	8ff9                	and	a5,a5,a4
+ 76a:	c05c                	sw	a5,4(s0)
+
+	// Set up single conversion on chl 2
+	ADC1->RSQR1 = 0;
+ 76c:	400127b7          	lui	a5,0x40012
+ 770:	40078793          	addi	a5,a5,1024 # 40012400 <__global_pointer$+0x20011c00>
+ 774:	0207a623          	sw	zero,44(a5)
+	ADC1->RSQR2 = 0;
+ 778:	0207a823          	sw	zero,48(a5)
+
+	// turn on ADC and set rule group to sw trig
+	ADC1->CTLR2 |= ADC_ADON | ADC_EXTSEL;
+ 77c:	4798                	lw	a4,8(a5)
+ 77e:	000e06b7          	lui	a3,0xe0
+ 782:	0685                	addi	a3,a3,1
+ 784:	8f55                	or	a4,a4,a3
+ 786:	c798                	sw	a4,8(a5)
+	
+	// Reset calibration
+	ADC1->CTLR2 |= ADC_RSTCAL;
+ 788:	4798                	lw	a4,8(a5)
+	while(ADC1->CTLR2 & ADC_RSTCAL);
+ 78a:	400126b7          	lui	a3,0x40012
+	ADC1->CTLR2 |= ADC_RSTCAL;
+ 78e:	00876713          	ori	a4,a4,8
+ 792:	c798                	sw	a4,8(a5)
+	while(ADC1->CTLR2 & ADC_RSTCAL);
+ 794:	40068793          	addi	a5,a3,1024 # 40012400 <__global_pointer$+0x20011c00>
+ 798:	4798                	lw	a4,8(a5)
+ 79a:	8b21                	andi	a4,a4,8
+ 79c:	ff65                	bnez	a4,794 <main+0x66>
+	
+	// Calibrate
+	ADC1->CTLR2 |= ADC_CAL;
+ 79e:	4798                	lw	a4,8(a5)
+ 7a0:	00476713          	ori	a4,a4,4
+ 7a4:	c798                	sw	a4,8(a5)
+	while(ADC1->CTLR2 & ADC_CAL);
+ 7a6:	40012737          	lui	a4,0x40012
+ 7aa:	40070793          	addi	a5,a4,1024 # 40012400 <__global_pointer$+0x20011c00>
+ 7ae:	479c                	lw	a5,8(a5)
+ 7b0:	8b91                	andi	a5,a5,4
+ 7b2:	ffe5                	bnez	a5,7aa <main+0x7c>
+	printf("done.\n\r");
+ 7b4:	6505                	lui	a0,0x1
+ 7b6:	a6c50513          	addi	a0,a0,-1428 # a6c <sineTable+0x118>
+ 7ba:	3b19                	jal	4d0 <printf>
+	uint32_t touch_base = ReadTouchPinSafe(GPIOC, 4, 2, 3);
+ 7bc:	20000097          	auipc	ra,0x20000
+ 7c0:	844080e7          	jalr	-1980(ra) # 20000000 <ReadTouchPinSafe.constprop.0>
+ 7c4:	87aa                	mv	a5,a0
+	uint8_t sel = 0;
+ 7c6:	4401                	li	s0,0
+	uint8_t flag_touch = 0;
+ 7c8:	4481                	li	s1,0
+ 7ca:	c03e                	sw	a5,0(sp)
+		touch_new = ReadTouchPinSafe(GPIOC, 4, 2, 3);
+ 7cc:	20000097          	auipc	ra,0x20000
+ 7d0:	834080e7          	jalr	-1996(ra) # 20000000 <ReadTouchPinSafe.constprop.0>
+		if(touch_new > touch_base + 100 && !flag_touch){
+ 7d4:	4782                	lw	a5,0(sp)
+		touch_new = ReadTouchPinSafe(GPIOC, 4, 2, 3);
+ 7d6:	862a                	mv	a2,a0
+		if(touch_new > touch_base + 100 && !flag_touch){
+ 7d8:	06478793          	addi	a5,a5,100
+ 7dc:	00a7ff63          	bgeu	a5,a0,7fa <main+0xcc>
+ 7e0:	ec89                	bnez	s1,7fa <main+0xcc>
+			frame = 0;
+ 7e2:	98018123          	sb	zero,-1662(gp) # 20000182 <frame>
+			sel++;
+ 7e6:	0405                	addi	s0,s0,1
+			slowFrame = 0;
+ 7e8:	980180a3          	sb	zero,-1663(gp) # 20000181 <slowFrame>
+			sel++;
+ 7ec:	0ff47413          	andi	s0,s0,255
+			if(sel > 3) sel = 0;
+ 7f0:	478d                	li	a5,3
+			flag_touch = 1;
+ 7f2:	4485                	li	s1,1
+			if(sel > 3) sel = 0;
+ 7f4:	0087f363          	bgeu	a5,s0,7fa <main+0xcc>
+ 7f8:	4401                	li	s0,0
+		setAnimation(0,sel);
+ 7fa:	85a2                	mv	a1,s0
+ 7fc:	4501                	li	a0,0
+ 7fe:	c032                	sw	a2,0(sp)
+ 800:	3c49                	jal	292 <setAnimation>
+		setAnimation(1,2);
+ 802:	4505                	li	a0,1
+ 804:	4589                	li	a1,2
+ 806:	3471                	jal	292 <setAnimation>
+		GPIOC->BSHR = (1<<(16+1));
+ 808:	4602                	lw	a2,0(sp)
+ 80a:	98418793          	addi	a5,gp,-1660 # 20000184 <strip>
+ 80e:	04078313          	addi	t1,a5,64
+		GPIOC->BSHR = 1<<(1);
+ 812:	400116b7          	lui	a3,0x40011
+ 816:	4509                	li	a0,2
+		GPIOC->BSHR = (1<<(16+1));
+ 818:	000202b7          	lui	t0,0x20
+		pushPixel(strip[i]);
+ 81c:	438c                	lw	a1,0(a5)
+ 81e:	4761                	li	a4,24
+	if(color & 0x800000){ // Write PC1, 1 = HIGH
+ 820:	008003b7          	lui	t2,0x800
+ 824:	0075f0b3          	and	ra,a1,t2
+		GPIOC->BSHR = 1<<(1);
+ 828:	ca88                	sw	a0,16(a3)
+	if(color & 0x800000){ // Write PC1, 1 = HIGH
+ 82a:	0c008a63          	beqz	ra,8fe <main+0x1d0>
+		asm volatile("nop\nnop\nnop\nnop\nnop\nnop");
+ 82e:	0001                	nop
+ 830:	0001                	nop
+ 832:	0001                	nop
+ 834:	0001                	nop
+ 836:	0001                	nop
+ 838:	0001                	nop
+		asm volatile("nop\nnop\nnop\nnop\nnop\nnop");
+ 83a:	0001                	nop
+ 83c:	0001                	nop
+ 83e:	0001                	nop
+ 840:	0001                	nop
+ 842:	0001                	nop
+ 844:	0001                	nop
+		asm volatile("nop\nnop\nnop\nnop\nnop\nnop");
+ 846:	0001                	nop
+ 848:	0001                	nop
+ 84a:	0001                	nop
+ 84c:	0001                	nop
+ 84e:	0001                	nop
+ 850:	0001                	nop
+		asm volatile("nop\nnop\nnop\nnop\nnop\nnop");
+ 852:	0001                	nop
+ 854:	0001                	nop
+ 856:	0001                	nop
+ 858:	0001                	nop
+ 85a:	0001                	nop
+ 85c:	0001                	nop
+		asm volatile("nop\nnop\nnop\nnop\nnop\nnop");
+ 85e:	0001                	nop
+ 860:	0001                	nop
+ 862:	0001                	nop
+ 864:	0001                	nop
+ 866:	0001                	nop
+ 868:	0001                	nop
+		asm volatile("nop\nnop\nnop\nnop\nnop\nnop");
+ 86a:	0001                	nop
+ 86c:	0001                	nop
+ 86e:	0001                	nop
+ 870:	0001                	nop
+ 872:	0001                	nop
+ 874:	0001                	nop
+		GPIOC->BSHR = (1<<(16+1));
+ 876:	0056a823          	sw	t0,16(a3) # 40011010 <__global_pointer$+0x20010810>
+		asm volatile("nop\nnop\nnop\nnop\nnop\nnop");
+ 87a:	0001                	nop
+ 87c:	0001                	nop
+ 87e:	0001                	nop
+ 880:	0001                	nop
+ 882:	0001                	nop
+ 884:	0001                	nop
+		asm volatile("nop\nnop\nnop\nnop");
+ 886:	0001                	nop
+ 888:	0001                	nop
+ 88a:	0001                	nop
+ 88c:	0001                	nop
+	for(uint8_t i=0; i<24; i++){
+ 88e:	177d                	addi	a4,a4,-1
+ 890:	0ff77713          	andi	a4,a4,255
+		color <<= 1;
+ 894:	0586                	slli	a1,a1,0x1
+	for(uint8_t i=0; i<24; i++){
+ 896:	f759                	bnez	a4,824 <main+0xf6>
+	for(int i=0; i<NUM_LEDS; i++){
+ 898:	0791                	addi	a5,a5,4
+ 89a:	f86791e3          	bne	a5,t1,81c <main+0xee>
+	uint32_t targend = SysTick->CNT + n;
+ 89e:	e000f7b7          	lui	a5,0xe000f
+ 8a2:	4798                	lw	a4,8(a5)
+ 8a4:	000757b7          	lui	a5,0x75
+ 8a8:	30078793          	addi	a5,a5,768 # 75300 <main.c.698ea652+0x73394>
+ 8ac:	973e                	add	a4,a4,a5
+	while( ((int32_t)( SysTick->CNT - targend )) < 0 );
+ 8ae:	e000f6b7          	lui	a3,0xe000f
+ 8b2:	469c                	lw	a5,8(a3)
+ 8b4:	8f99                	sub	a5,a5,a4
+ 8b6:	fe07cee3          	bltz	a5,8b2 <main+0x184>
+		frame++;
+ 8ba:	9821c783          	lbu	a5,-1662(gp) # 20000182 <frame>
+ 8be:	0785                	addi	a5,a5,1
+ 8c0:	0ff7f793          	andi	a5,a5,255
+ 8c4:	98f18123          	sb	a5,-1662(gp) # 20000182 <frame>
+		if(!(frame%16)){
+ 8c8:	00f7f713          	andi	a4,a5,15
+ 8cc:	e311                	bnez	a4,8d0 <main+0x1a2>
+			flag_touch = 0; // Debounce reset every 16 cycles
+ 8ce:	4481                	li	s1,0
+		if(!(frame%4)){
+ 8d0:	0037f713          	andi	a4,a5,3
+ 8d4:	e31d                	bnez	a4,8fa <main+0x1cc>
+			slowFrame++;
+ 8d6:	9811c703          	lbu	a4,-1663(gp) # 20000181 <slowFrame>
+			if(slowFrame >= 64){
+ 8da:	03f00593          	li	a1,63
+			slowFrame++;
+ 8de:	0705                	addi	a4,a4,1
+ 8e0:	0ff77713          	andi	a4,a4,255
+			if(slowFrame >= 64){
+ 8e4:	06e5e463          	bltu	a1,a4,94c <main+0x21e>
+			slowFrame++;
+ 8e8:	98e180a3          	sb	a4,-1663(gp) # 20000181 <slowFrame>
+		if(!frame){
+ 8ec:	e799                	bnez	a5,8fa <main+0x1cc>
+			slowFlop = !slowFlop;
+ 8ee:	9801c783          	lbu	a5,-1664(gp) # 20000180 <slowFlop>
+ 8f2:	0017b793          	seqz	a5,a5
+ 8f6:	98f18023          	sb	a5,-1664(gp) # 20000180 <slowFlop>
+		touch_new = ReadTouchPinSafe(GPIOC, 4, 2, 3);
+ 8fa:	87b2                	mv	a5,a2
+ 8fc:	b5f9                	j	7ca <main+0x9c>
+		asm volatile("nop\nnop\nnop\nnop\nnop\nnop");
+ 8fe:	0001                	nop
+ 900:	0001                	nop
+ 902:	0001                	nop
+ 904:	0001                	nop
+ 906:	0001                	nop
+ 908:	0001                	nop
+		asm volatile("nop\nnop\nnop\nnop\nnop\nnop");
+ 90a:	0001                	nop
+ 90c:	0001                	nop
+ 90e:	0001                	nop
+ 910:	0001                	nop
+ 912:	0001                	nop
+ 914:	0001                	nop
+		GPIOC->BSHR = (1<<(16+1));
+ 916:	0056a823          	sw	t0,16(a3) # e000f010 <__global_pointer$+0xc000e810>
+		asm volatile("nop\nnop\nnop\nnop\nnop\nnop");
+ 91a:	0001                	nop
+ 91c:	0001                	nop
+ 91e:	0001                	nop
+ 920:	0001                	nop
+ 922:	0001                	nop
+ 924:	0001                	nop
+		asm volatile("nop\nnop\nnop\nnop\nnop\nnop");
+ 926:	0001                	nop
+ 928:	0001                	nop
+ 92a:	0001                	nop
+ 92c:	0001                	nop
+ 92e:	0001                	nop
+ 930:	0001                	nop
+		asm volatile("nop\nnop\nnop\nnop\nnop\nnop");
+ 932:	0001                	nop
+ 934:	0001                	nop
+ 936:	0001                	nop
+ 938:	0001                	nop
+ 93a:	0001                	nop
+ 93c:	0001                	nop
+		asm volatile("nop\nnop\nnop\nnop\nnop\nnop");
+ 93e:	0001                	nop
+ 940:	0001                	nop
+ 942:	0001                	nop
+ 944:	0001                	nop
+ 946:	0001                	nop
+ 948:	0001                	nop
+ 94a:	b791                	j	88e <main+0x160>
+				slowFrame = 0;
+ 94c:	980180a3          	sb	zero,-1663(gp) # 20000181 <slowFrame>
+ 950:	bf71                	j	8ec <main+0x1be>
+	...
+
+00000954 <sineTable>:
+ 954:	8380 8986 8f8c 9592 9b98 a29e a7a5 adaa     ................
+ 964:	b3b0 b9b6 bebc c4c1 c9c6 cecb d3d0 d7d5     ................
+ 974:	dcda e0de e4e2 e8e6 ebea eeed f1f0 f4f3     ................
+ 984:	f6f5 f9f8 fafa fcfb fdfd fefe fffe ffff     ................
+ 994:	ffff ffff fefe fdfe fcfd fafb f9fa f6f8     ................
+ 9a4:	f4f5 f1f3 eef0 ebed e8ea e4e6 e0e2 dcde     ................
+ 9b4:	d7da d3d5 ced0 c9cb c4c6 bec1 b9bc b3b6     ................
+ 9c4:	adb0 a7aa a2a5 9b9e 9598 8f92 898c 8386     ................
+ 9d4:	7c80 7679 7073 6a6d 6467 5d61 585a 5255     .|yvspmjgda]ZXUR
+ 9e4:	4c4f 4649 4143 3b3e 3639 3134 2c2f 282a     OLIFCA>;9641/,*(
+ 9f4:	2325 1f21 1b1d 1719 1415 1112 0e0f 0b0c     %#!.............
+ a04:	090a 0607 0505 0304 0202 0101 0001 0000     ................
+ a14:	0000 0000 0101 0201 0302 0504 0605 0907     ................
+ a24:	0b0a 0e0c 110f 1412 1715 1b19 1f1d 2321     ..............!#
+ a34:	2825 2c2a 312f 3634 3b39 413e 4643 4c49     %(*,/1469;>ACFIL
+ a44:	524f 5855 5d5a 6461 6a67 706d 7673 7c79     ORUXZ]adgjmpsvy|
+ a54:	000a 0000 6e69 7469 6169 696c 697a 676e     ....initializing
+ a64:	6120 6364 2e2e 002e 6f64 656e 0a2e 000d      adc....done....
+
+Disassembly of section .data:
+
+20000000 <ReadTouchPinSafe.constprop.0>:
+}
+
+// Run from RAM to get even more stable timing.
+// This function call takes about 8.1uS to execute.
+static uint32_t ReadTouchPinSafe( GPIO_TypeDef * io, int portpin, int adcno, int iterations ) __attribute__((noinline, section(".srodata")));
+uint32_t ReadTouchPinSafe( GPIO_TypeDef * io, int portpin, int adcno, int iterations )
+20000000:	1131                	addi	sp,sp,-20
+{
+	uint32_t ret = 0;
+
+	ADC1->RSQR3 = adcno;
+20000002:	400127b7          	lui	a5,0x40012
+uint32_t ReadTouchPinSafe( GPIO_TypeDef * io, int portpin, int adcno, int iterations )
+20000006:	c622                	sw	s0,12(sp)
+20000008:	c426                	sw	s1,8(sp)
+2000000a:	c806                	sw	ra,16(sp)
+	ADC1->RSQR3 = adcno;
+2000000c:	40078793          	addi	a5,a5,1024 # 40012400 <__global_pointer$+0x20011c00>
+20000010:	4709                	li	a4,2
+20000012:	dbd8                	sw	a4,52(a5)
+	ADC1->SAMPTR2 = TOUCH_ADC_SAMPLE_TIME<<(3*adcno);
+20000014:	08000713          	li	a4,128
+20000018:	cb98                	sw	a4,16(a5)
+	for( i = 0; i < iterations; i++ )
+	{
+		// Wait a variable amount of time based on loop iteration, in order
+		// to get a variety of RC points and minimize DNL.
+
+		INNER_LOOP_SAFE( 0 );
+2000001a:	fff10437          	lui	s0,0xfff10
+	ADC1->SAMPTR2 = TOUCH_ADC_SAMPLE_TIME<<(3*adcno);
+2000001e:	448d                	li	s1,3
+	uint32_t ret = 0;
+20000020:	c002                	sw	zero,0(sp)
+		INNER_LOOP_SAFE( 0 );
+20000022:	147d                	addi	s0,s0,-1
+20000024:	284000e7          	jalr	644(zero) # 0 <InterruptVector>
+20000028:	400127b7          	lui	a5,0x40012
+2000002c:	004e0737          	lui	a4,0x4e0
+20000030:	40078793          	addi	a5,a5,1024 # 40012400 <__global_pointer$+0x20011c00>
+20000034:	0705                	addi	a4,a4,1
+20000036:	c798                	sw	a4,8(a5)
+20000038:	40011737          	lui	a4,0x40011
+2000003c:	431c                	lw	a5,0(a4)
+2000003e:	000806b7          	lui	a3,0x80
+20000042:	8fe1                	and	a5,a5,s0
+20000044:	8fd5                	or	a5,a5,a3
+20000046:	c31c                	sw	a5,0(a4)
+20000048:	001007b7          	lui	a5,0x100
+2000004c:	cb1c                	sw	a5,16(a4)
+2000004e:	276000e7          	jalr	630(zero) # 0 <InterruptVector>
+20000052:	40012737          	lui	a4,0x40012
+20000056:	40072783          	lw	a5,1024(a4) # 40012400 <__global_pointer$+0x20011c00>
+2000005a:	8b89                	andi	a5,a5,2
+2000005c:	dfed                	beqz	a5,20000056 <ReadTouchPinSafe.constprop.0+0x56>
+2000005e:	284000e7          	jalr	644(zero) # 0 <InterruptVector>
+20000062:	400117b7          	lui	a5,0x40011
+20000066:	4398                	lw	a4,0(a5)
+20000068:	000206b7          	lui	a3,0x20
+2000006c:	8f61                	and	a4,a4,s0
+2000006e:	8f55                	or	a4,a4,a3
+20000070:	c398                	sw	a4,0(a5)
+20000072:	276000e7          	jalr	630(zero) # 0 <InterruptVector>
+20000076:	4741                	li	a4,16
+20000078:	400117b7          	lui	a5,0x40011
+2000007c:	cb98                	sw	a4,16(a5)
+2000007e:	400127b7          	lui	a5,0x40012
+20000082:	40078713          	addi	a4,a5,1024 # 40012400 <__global_pointer$+0x20011c00>
+20000086:	4778                	lw	a4,76(a4)
+20000088:	c23a                	sw	a4,4(sp)
+		INNER_LOOP_SAFE( 2 );
+2000008a:	284000e7          	jalr	644(zero) # 0 <InterruptVector>
+2000008e:	004e0737          	lui	a4,0x4e0
+20000092:	400127b7          	lui	a5,0x40012
+20000096:	0705                	addi	a4,a4,1
+20000098:	40078793          	addi	a5,a5,1024 # 40012400 <__global_pointer$+0x20011c00>
+2000009c:	c798                	sw	a4,8(a5)
+2000009e:	0001                	nop
+200000a0:	0001                	nop
+200000a2:	400117b7          	lui	a5,0x40011
+200000a6:	4398                	lw	a4,0(a5)
+200000a8:	000806b7          	lui	a3,0x80
+200000ac:	8f61                	and	a4,a4,s0
+200000ae:	8f55                	or	a4,a4,a3
+200000b0:	c398                	sw	a4,0(a5)
+200000b2:	00100737          	lui	a4,0x100
+200000b6:	cb98                	sw	a4,16(a5)
+200000b8:	276000e7          	jalr	630(zero) # 0 <InterruptVector>
+200000bc:	40012737          	lui	a4,0x40012
+200000c0:	40072783          	lw	a5,1024(a4) # 40012400 <__global_pointer$+0x20011c00>
+200000c4:	8b89                	andi	a5,a5,2
+200000c6:	dfed                	beqz	a5,200000c0 <ReadTouchPinSafe.constprop.0+0xc0>
+200000c8:	284000e7          	jalr	644(zero) # 0 <InterruptVector>
+200000cc:	400117b7          	lui	a5,0x40011
+200000d0:	4398                	lw	a4,0(a5)
+200000d2:	000206b7          	lui	a3,0x20
+200000d6:	8f61                	and	a4,a4,s0
+200000d8:	8f55                	or	a4,a4,a3
+200000da:	c398                	sw	a4,0(a5)
+200000dc:	276000e7          	jalr	630(zero) # 0 <InterruptVector>
+200000e0:	4741                	li	a4,16
+200000e2:	400117b7          	lui	a5,0x40011
+200000e6:	cb98                	sw	a4,16(a5)
+200000e8:	400127b7          	lui	a5,0x40012
+200000ec:	40078713          	addi	a4,a5,1024 # 40012400 <__global_pointer$+0x20011c00>
+200000f0:	4692                	lw	a3,4(sp)
+200000f2:	4778                	lw	a4,76(a4)
+200000f4:	9736                	add	a4,a4,a3
+200000f6:	c23a                	sw	a4,4(sp)
+		INNER_LOOP_SAFE( 4 );
+200000f8:	284000e7          	jalr	644(zero) # 0 <InterruptVector>
+200000fc:	004e0737          	lui	a4,0x4e0
+20000100:	400127b7          	lui	a5,0x40012
+20000104:	0705                	addi	a4,a4,1
+20000106:	40078793          	addi	a5,a5,1024 # 40012400 <__global_pointer$+0x20011c00>
+2000010a:	c798                	sw	a4,8(a5)
+2000010c:	0001                	nop
+2000010e:	0001                	nop
+20000110:	0001                	nop
+20000112:	0001                	nop
+20000114:	400117b7          	lui	a5,0x40011
+20000118:	4398                	lw	a4,0(a5)
+2000011a:	000806b7          	lui	a3,0x80
+2000011e:	8f61                	and	a4,a4,s0
+20000120:	8f55                	or	a4,a4,a3
+20000122:	c398                	sw	a4,0(a5)
+20000124:	00100737          	lui	a4,0x100
+20000128:	cb98                	sw	a4,16(a5)
+2000012a:	276000e7          	jalr	630(zero) # 0 <InterruptVector>
+2000012e:	40012737          	lui	a4,0x40012
+20000132:	40072783          	lw	a5,1024(a4) # 40012400 <__global_pointer$+0x20011c00>
+20000136:	8b89                	andi	a5,a5,2
+20000138:	dfed                	beqz	a5,20000132 <ReadTouchPinSafe.constprop.0+0x132>
+2000013a:	284000e7          	jalr	644(zero) # 0 <InterruptVector>
+2000013e:	40011737          	lui	a4,0x40011
+20000142:	431c                	lw	a5,0(a4)
+20000144:	00020637          	lui	a2,0x20
+	for( i = 0; i < iterations; i++ )
+20000148:	14fd                	addi	s1,s1,-1
+		INNER_LOOP_SAFE( 4 );
+2000014a:	8fe1                	and	a5,a5,s0
+2000014c:	8fd1                	or	a5,a5,a2
+2000014e:	c31c                	sw	a5,0(a4)
+20000150:	276000e7          	jalr	630(zero) # 0 <InterruptVector>
+20000154:	47c1                	li	a5,16
+20000156:	40011737          	lui	a4,0x40011
+2000015a:	cb1c                	sw	a5,16(a4)
+2000015c:	400127b7          	lui	a5,0x40012
+20000160:	40078693          	addi	a3,a5,1024 # 40012400 <__global_pointer$+0x20011c00>
+20000164:	46fc                	lw	a5,76(a3)
+20000166:	4712                	lw	a4,4(sp)
+20000168:	97ba                	add	a5,a5,a4
+2000016a:	4702                	lw	a4,0(sp)
+2000016c:	97ba                	add	a5,a5,a4
+2000016e:	c03e                	sw	a5,0(sp)
+	for( i = 0; i < iterations; i++ )
+20000170:	ea049ae3          	bnez	s1,20000024 <ReadTouchPinSafe.constprop.0+0x24>
+	}
+
+	return ret;
+}
+20000174:	40c2                	lw	ra,16(sp)
+20000176:	4432                	lw	s0,12(sp)
+20000178:	44a2                	lw	s1,8(sp)
+2000017a:	853e                	mv	a0,a5
+2000017c:	0151                	addi	sp,sp,20
+2000017e:	8082                	ret
